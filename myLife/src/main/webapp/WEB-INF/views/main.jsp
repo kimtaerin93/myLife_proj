@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,12 +17,12 @@
 	<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 
-	<link rel="stylesheet" href="/fonts/icomoon/style.css">
-	<link rel="stylesheet" href="/fonts/flaticon/font/flaticon.css">
+	<link rel="stylesheet" href="../fonts/icomoon/style.css">
+	<link rel="stylesheet" href="../fonts/flaticon/font/flaticon.css">
 
-	<link rel="stylesheet" href="/css/tiny-slider.css">
-	<link rel="stylesheet" href="/css/aos.css">
-	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="../css/tiny-slider.css">
+	<link rel="stylesheet" href="../css/aos.css">
+	<link rel="stylesheet" href="../css/style.css">
 
 	<title>Property &mdash; Free Bootstrap 5 Website Template by Untree.co</title>
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -43,7 +44,22 @@
 					<a href="main" class="logo m-0 float-start">My Life</a>
 
 					<ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu float-end">
-						<li class="active"><a href="main">Home</a></li>
+						<!-- ÇöÀç URL -->
+						<c:set var="url" value="${pageContext.request.requestURL}" />
+						 
+						<c:forEach var="menu" items="${menu}">
+							<c:choose>
+								<c:when test ="${menu.menuUrl eq url}">
+									<li class="active"><a href="${menu.menuUrl}">${menu.menuNm}</a></li>
+								</c:when>
+								<c:otherwise>
+									<li><a href="${menu.menuUrl}">${menu.menuNm}</a></li>
+								</c:otherwise>
+							</c:choose>
+						</c:forEach>
+						
+						
+						<!-- <li class="active"><a href="main">Home</a></li>
 						<li class="has-children">
 							<a href="properties.html">Study</a>
 							<ul class="dropdown">
@@ -59,7 +75,7 @@
 								</li>
 							</ul>
 						</li>
-						<li><a href="/etc">Etc</a></li>
+						<li><a href="/etc">Etc</a></li> -->
 						<!-- <li><a href="services.html">Services</a></li>
 						<li><a href="about.html">About</a></li>
 						<li><a href="contact.html">Contact Us</a></li> -->
@@ -68,7 +84,6 @@
 					<a href="#" class="burger light me-auto float-end mt-1 site-menu-toggle js-menu-toggle d-inline-block d-lg-none" data-toggle="collapse" data-target="#main-navbar">
 						<span></span>
 					</a>
-
 				</div>
 			</div>
 		</div>
@@ -77,7 +92,7 @@
 	<div class="hero">
 
 		<div class="hero-slide">
-			<div class="img overlay" style="background-image: url('/images/ferris wheel.jpg')"></div>
+			<div class="img overlay" style="background-image: url('../images/ferris wheel.jpg')"></div>
 		</div>
 
 		<div class="container">

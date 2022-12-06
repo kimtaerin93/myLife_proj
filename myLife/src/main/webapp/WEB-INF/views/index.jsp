@@ -28,6 +28,7 @@
 	<link rel="stylesheet" href="/css/style.css">
 
 	<title>Property &mdash; Free Bootstrap 5 Website Template by Untree.co</title>
+	<%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
 </head>
 <body>
 
